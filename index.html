@@ -1,0 +1,298 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 8.5 - Explore Gallery</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #1e293b;
+            line-height: 1.6;
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            object-fit: cover;
+        }
+
+        /* Primary page layout using named Grid areas */
+        .page {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            grid-template-areas:
+                "header"
+                "main"
+                "footer";
+        }
+
+        .header {
+            grid-area: header;
+            background: #142d4e;
+            color: white;
+            padding: 24px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 27px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            color: #dbeafe;
+            font-size: 14px;
+        }
+
+        .main {
+            grid-area: main;
+            width: 100%;
+            max-width: 1250px;
+            margin: auto;
+            padding: 40px 24px;
+            min-width: 0;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .intro h1 {
+            font-size: clamp(27px, 4vw, 40px);
+            margin-bottom: 10px;
+            color: #142d4e;
+        }
+
+        .intro p {
+            color: #64748b;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        /* Responsive image grid */
+        .gallery {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+            gap: 24px;
+            align-items: stretch;
+        }
+
+        .card {
+            min-width: 0;
+            overflow: hidden;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 5px 18px rgba(15, 23, 42, 0.08);
+            transition: transform 0.25s ease,
+                        box-shadow 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.14);
+        }
+
+        .card img {
+            height: 220px;
+        }
+
+        .card-content {
+            padding: 18px;
+            overflow-wrap: anywhere;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e0ecff;
+            color: #1d4ed8;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
+        .card h2 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .footer {
+            grid-area: footer;
+            background: #142d4e;
+            color: white;
+            text-align: center;
+            padding: 24px 15px;
+        }
+
+        .footer p {
+            color: #dbeafe;
+            font-size: 14px;
+        }
+
+        /* Tablet layout */
+        @media (max-width: 800px) {
+            .main {
+                padding: 30px 18px;
+            }
+
+            .gallery {
+                gap: 18px;
+            }
+
+            .card img {
+                height: 200px;
+            }
+        }
+
+        /* Small mobile layout */
+        @media (max-width: 400px) {
+            .header {
+                padding: 20px 16px;
+            }
+
+            .logo {
+                font-size: 23px;
+            }
+
+            .main {
+                padding: 24px 14px;
+            }
+
+            .gallery {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 16px;
+            }
+
+            .card img {
+                height: 190px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page">
+
+        <header class="header">
+            <div class="logo">Explore Gallery</div>
+            <p>Discover the beauty of our world</p>
+        </header>
+
+        <main class="main">
+
+            <section class="intro">
+                <h1>Explore the World</h1>
+                <p>
+                    A collection of beautiful places, natural landscapes,
+                    and unforgettable moments from around the world.
+                </p>
+            </section>
+
+            <section class="gallery">
+
+                <article class="card">
+                    <img
+                        src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=700"
+                        alt="Beautiful lake surrounded by mountains">
+                    <div class="card-content">
+                        <span class="tag">Nature</span>
+                        <h2>Mountain Escape</h2>
+                        <p>Experience peaceful lakes and breathtaking mountain views.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img
+                        src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700"
+                        alt="Blue ocean and sandy beach">
+                    <div class="card-content">
+                        <span class="tag">Travel</span>
+                        <h2>Tropical Paradise</h2>
+                        <p>Relax beside clear blue water and beautiful sandy beaches.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img
+                        src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=700"
+                        alt="Sunlight passing through a green forest">
+                    <div class="card-content">
+                        <span class="tag">Adventure</span>
+                        <h2>Green Forest</h2>
+                        <p>Discover the calm atmosphere of nature and woodland trails.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img
+                        src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=700"
+                        alt="Snowy mountain beneath a starry sky">
+                    <div class="card-content">
+                        <span class="tag">Landscape</span>
+                        <h2>Starry Mountains</h2>
+                        <p>Enjoy a spectacular night sky above a snowy landscape.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img
+                        src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=700"
+                        alt="Golden sunrise across a landscape">
+                    <div class="card-content">
+                        <span class="tag">Photography</span>
+                        <h2>Golden Sunrise</h2>
+                        <p>Start the day with warm colours and a peaceful horizon.</p>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <img
+                        src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=700"
+                        alt="Expansive natural landscape">
+                    <div class="card-content">
+                        <span class="tag">Discovery</span>
+                        <h2>Open Landscapes</h2>
+                        <p>Explore wide-open scenery and the beauty of the outdoors.</p>
+                    </div>
+                </article>
+
+            </section>
+
+        </main>
+
+        <footer class="footer">
+            <h3>Explore Gallery</h3>
+            <p>Assignment 8.5 | CSS Grid Mini-Project</p>
+            <p>&copy; 2026 Explore Gallery. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
